@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post[1] }}</title>
+</head>
+<body>
+    <h1>{{ post[1] }}</h1>
+    <p>{{ post[2] }}</p>
+
+    <h2>评论</h2>
+    <form method="post" action="{{ url_for('add_comment', post_id=post[0]) }}">
+        <label for="comment">评论:</label><br>
+        <textarea id="comment" name="comment" required></textarea><br>
+        <input type="submit" value="提交评论">
+    </form>
+
+    {% if comments %}
+    <ul>
+        {% for comment in comments %}
+        <li>{{ comment[2] }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>目前没有评论</p>
+    {% endif %}
+</body>
+</html>

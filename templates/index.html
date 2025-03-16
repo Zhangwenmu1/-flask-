@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>文章列表</title>
+</head>
+<body>
+    <h1>文章列表</h1>
+    {% for post in posts %}
+        <h2><a href="{{ url_for('view_post', post_id=post[0]) }}">{{ post[1] }}</a></h2>
+        <p>{{ post[2] }}</p>
+        <form method="post" action="{{ url_for('delete_post', post_id=post[0]) }}">
+            <input type="submit" value="删除">
+        </form>
+    {% endfor %}
+    <a href="{{ url_for('new_post') }}">发布新文章</a>
+    <a href="{{ url_for('register') }}">注册</a>  <!-- 新增注册链接 -->
+    <a href="{{ url_for('login') }}">登录</a>    <!-- 新增登录链接 -->
+</body>
+</html>
